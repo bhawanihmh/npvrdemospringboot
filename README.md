@@ -8,6 +8,8 @@ Request : http://localhost:8080/npvr/record
 
 Content-Type = application/json
 
+POST request
+
 request body :
 {
     "channelId" : "8",
@@ -40,8 +42,8 @@ Response Like :
 
 
 
-
+GET request
 http://localhost:8080/npvr/hi
 
-http://localhost:8080/npvr/record
+
 
