@@ -39,3 +39,9 @@ Response Like :
 }
 
 
+
+
+http://localhost:8080/npvr/hi
+
+http://localhost:8080/npvr/record
+
