@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import iptv.npvr.exception.NpvrException;
 import iptv.npvr.pojo.Channel;
@@ -149,7 +150,17 @@ public class NpvrREST {
 		return channels.get(channelId);
 	}
 	
-	public Programme getProgramme(String programId)  throws NpvrException {			
+	public Programme getProgramme(String programId)  throws NpvrException {	
+		try{
+	        RestTemplate restTemplate = new RestTemplate();
+	        Programme programme = restTemplate.getForObject("http://programmedemospringboot/programme/{id}", Programme.class, programId);
+	        LOGGER.info("Programme ID: " + programme.getProgId());
+	        LOGGER.info("Programme Name: " + programme.getProgName());
+	        LOGGER.info("Programme Duration: " + programme.getProgDuration());
+		}catch (Exception exception) {
+			LOGGER.info("Programme service calling fail");
+		}
+				
 		return programmes.get(programId);
 	}
 }
